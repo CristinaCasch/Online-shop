@@ -9,7 +9,7 @@ import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { NavbarMenu } from "./component/navbar";
-import { Footer } from "./component/footer";
+import { FooterMenu } from "./component/footer";
 
 //create your first component
 const Layout = () => {
@@ -34,7 +34,7 @@ const Layout = () => {
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
-					<Footer />
+					<FooterMenu />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
