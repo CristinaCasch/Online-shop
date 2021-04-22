@@ -1,15 +1,16 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import {} from "react-bootstrap";
 
-import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import Login from "./pages/login";
+import SignUp from "./pages/signUp";
+import { Home } from "./pages/home";
+import { Demo } from "./pages/demo";
+import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
-import { NavbarMenu } from "./component/navbar";
-import { FooterMenu } from "./component/footer";
+import { Navbar } from "./component/navbar";
+import { Footer } from "./component/footer";
 
 //create your first component
 const Layout = () => {
@@ -18,15 +19,18 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="d-flex flex-column">
+		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<NavbarMenu />
+					<Navbar />
 					<Switch>
-						<Route exact path="/">
-							<Home />
+						<Route exact path="/" component={Login} />
+						<Route exact path="/signUp" component={SignUp} />
+						<Route exact path="/home" component={Home} />
+
+						<Route exact path="/demo">
+							<Demo />
 						</Route>
-						<Route exact path="/demo" />
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
@@ -34,7 +38,7 @@ const Layout = () => {
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
-					<FooterMenu />
+					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
